@@ -1,0 +1,135 @@
+.about-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.eyebrow {
+  color: #807896;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+}
+
+.about-hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+}
+
+.about-hero em {
+  color: var(--primary);
+  font-style: italic;
+}
+
+.about-hero p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+.portrait {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #2c253d, #5f4f82);
+}
+
+.portrait-light {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 80% 20%, rgba(173, 149, 225, 0.42), transparent 45%);
+}
+
+.portrait-face {
+  position: absolute;
+  inset: 0;
+}
+
+.portrait-face {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.portrait-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.period {
+  color: #7b7391;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  font-family: var(--font-meta);
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.expertise-grid .big {
+  grid-column: span 2;
+  background:
+    linear-gradient(160deg, rgba(233, 226, 245, 0.95), rgba(245, 240, 252, 0.95)),
+    #f4f1fa;
+}
+
+.expertise-grid .highlight {
+  background: linear-gradient(160deg, #6d57b6, #58439f);
+  color: #f3eeff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.expertise-grid .highlight p {
+  color: rgba(243, 238, 255, 0.9);
+}
+
+.expertise-grid .cyan {
+  background: linear-gradient(160deg, #c8bbe3, #ad9bd2);
+}
+
+.philosophy {
+  text-align: center;
+  padding: 22px 10px 0;
+}
+
+.philosophy h2 {
+  margin: 0 0 18px;
+  font-size: 1.4rem;
+  font-family: var(--font-display);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.philosophy-grid h3 {
+  margin: 0 0 6px;
+  color: var(--primary);
+}
+
+.philosophy-grid p {
+  margin: 0;
+  color: var(--text-muted);
+}
