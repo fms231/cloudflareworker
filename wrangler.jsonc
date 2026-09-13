@@ -18,5 +18,16 @@
 	"assets": {
 		"directory": "./dist",
 		"binding": "ASSETS"
-	}
+	},
+	/**
+	 * D1 Database
+	 * https://developers.cloudflare.com/d1/configuration/wrangler-configuration/
+	 */
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "blog-database",
+			"database_id": "caddf281-8e60-45aa-9c7f-9f7cf0a1da10"
+		}
+	]
 }
