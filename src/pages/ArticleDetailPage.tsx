@@ -16,7 +16,7 @@ function ArticleDetailPage() {
   useEffect(() => {
     if (!articleId) return
     fetch(`/api/articles/${articleId}`)
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error('Not found'))))
       .then((data: Article) => {
         setArticle(data)
         setLoading(false)

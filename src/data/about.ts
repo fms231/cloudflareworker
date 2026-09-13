@@ -20,7 +20,7 @@ export const aboutContent = {
       {
         period: '2025.06 — 2026.03',
         title: 'ByteDance (GMPT)',
-        description: 'Worked on Bytedance GMPT team. Focused on Go backend systems, improving reliability and delivery speed through better API design and infrastructure.',
+        description: 'Worked on ByteDance GMPT team. Focused on Go backend systems, improving reliability and delivery speed through better API design and infrastructure.',
       },
       {
         period: '2020 — 2025',

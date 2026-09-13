@@ -13,8 +13,12 @@ export default {
 		const url = new URL(request.url)
 
 		if (url.pathname === '/api/categories') {
-			const categories = await getCategories(env.DB)
-			return json(categories)
+			try {
+				const categories = await getCategories(env.DB)
+				return json(categories)
+			} catch (e) {
+				return json({ error: 'Internal server error' }, 500)
+			}
 		}
 
 		if (url.pathname === '/api/articles') {

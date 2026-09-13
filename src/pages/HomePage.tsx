@@ -15,7 +15,10 @@ function HomePage() {
 
   useEffect(() => {
     fetch('/api/articles')
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Article request failed: ${res.status}`)
+        return res.json()
+      })
       .then((data: Article[]) => setArticles(data))
       .catch(() => {})
   }, [])

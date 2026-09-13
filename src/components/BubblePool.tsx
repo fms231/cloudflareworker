@@ -44,7 +44,7 @@ function resolveCollision(a: Bubble, b: Bubble): [Bubble, Bubble] {
   const dvy = a.vy - b.vy
   const dvDotN = dvx * nx + dvy * ny
 
-  if (dvDotN > 0) return [aNew, bNew]
+  if (dvDotN <= 0) return [aNew, bNew]
 
   const impulse = (2 * dvDotN) / total
 

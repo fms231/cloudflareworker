@@ -132,7 +132,7 @@
 }
 
 .detail-content code {
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
   background: #f0ebf8;
   padding: 2px 6px;
   border-radius: 4px;
