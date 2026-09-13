@@ -1,10 +1,10 @@
 export const aboutContent = {
   hero: {
     eyebrow: 'Backend Engineer',
-    title: 'Building resilient services with Go, Python, Redis, MySQL, MQ, and Docker.',
+    title: 'Hi, I\'m Quito. Backend Engineer based in Guangzhou, China.',
     description:
-      'I am a backend engineer focused on reliability, observability, and pragmatic delivery. I have been following AI progress closely and using vibe coding to move faster while keeping systems clean.',
-    tags: ['Go', 'Python', 'AI', 'Infrastructure'],
+      'Open to opportunities in Backend Development or AI Application Development. Currently working in Guangzhou, China.',
+    tags: ['MySQL', 'Docker', 'Redis', 'RocketMQ', 'Go', 'Python'],
     videoSrc: '',
     videoAlt: 'Wallpaper video background',
   },
@@ -13,19 +13,19 @@ export const aboutContent = {
     description: 'A backend-first path centered on APIs, data layers, caching, messaging, and deployment tooling.',
     items: [
       {
-        period: '2026 — PRESENT',
-        title: 'Full Stack Engineer',
-        description: 'Building a personal blog with React, TypeScript, and a Go backend, focusing on clean architecture and a calm user experience.',
+        period: '2026.04 — 2026.08',
+        title: 'Tencent (WeChat Group)',
+        description: 'Backend engineering at Tencent, working on WeChat Group systems.',
       },
       {
-        period: '2025 — 2026',
-        title: 'Backend Engineering',
-        description: 'Worked on Bytedance. Focused on Go backend systems, improving reliability and delivery speed through better API design and infrastructure.',
+        period: '2025.06 — 2026.03',
+        title: 'ByteDance (GMPT)',
+        description: 'Worked on ByteDance GMPT team. Focused on Go backend systems, improving reliability and delivery speed through better API design and infrastructure.',
       },
       {
         period: '2020 — 2025',
-        title: 'Software Learner',
-        description: 'Started with Go and Python backend systems, focusing on stable integrations and clean delivery.',
+        title: 'USTC M.S. Student',
+        description: 'Software learner at University of Science and Technology of China, Hefei.',
       },
     ],
   },

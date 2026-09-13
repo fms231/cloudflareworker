@@ -1,17 +1,31 @@
+import { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import Markdown from 'react-markdown'
 
 import avatarImage from '../assets/avatar.png'
-import { getArticleById } from '../data/articles'
 import { siteContent } from '../data/content'
+import type { Article } from '../types/blog'
+import { articleDate, articleReadMinutes } from '../types/blog'
 
 function ArticleDetailPage() {
   const navigate = useNavigate()
   const { articleId } = useParams<{ articleId: string }>()
-  const article = getArticleById(articleId)
+  const [article, setArticle] = useState<Article | null>(null)
+  const [loading, setLoading] = useState(true)
 
-  if (articleId && article.id !== articleId) {
-    return <Navigate replace to="/articles" />
-  }
+  useEffect(() => {
+    if (!articleId) return
+    fetch(`/api/articles/${articleId}`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error('Not found'))))
+      .then((data: Article) => {
+        setArticle(data)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [articleId])
+
+  if (loading) return null
+  if (!article) return <Navigate replace to="/articles" />
 
   return (
     <section className="page page-detail">
@@ -21,9 +35,9 @@ function ArticleDetailPage() {
       <article className="card detail-shell">
         <header className="detail-header">
           <div className="article-meta">
-            <span className="chip">{article.category}</span>
-            <span>{article.readMinutes} min read</span>
-            <span>{article.date}</span>
+            <span className="chip">{article.category ?? '未分类'}</span>
+            <span>{articleReadMinutes(article)} min read</span>
+            <span>{articleDate(article)}</span>
           </div>
           <h1>{article.title}</h1>
           <div className="author">
@@ -38,20 +52,7 @@ function ArticleDetailPage() {
         </header>
 
         <div className="detail-content">
-          {article.body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-          <blockquote>{article.quote}</blockquote>
-          <h2>Structural Integrity of Thought</h2>
-          <ol>
-            {article.points.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ol>
-          <p>
-            The goal is a crystalline organization: a space where users can
-            breathe, think, and create with confidence.
-          </p>
+          <Markdown>{article.content}</Markdown>
         </div>
       </article>
     </section>

@@ -1,12 +1,21 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import { articles } from '../data/articles'
+import type { Article } from '../types/blog'
+import { articleDate, articleExcerpt } from '../types/blog'
 
 function ArticlesPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const searchQuery = (searchParams.get('q') ?? '').trim()
+  const [articles, setArticles] = useState<Article[]>([])
+
+  useEffect(() => {
+    fetch('/api/articles')
+      .then((res) => res.json())
+      .then((data: Article[]) => setArticles(data))
+      .catch(() => {})
+  }, [])
 
   const visibleArticles = useMemo(() => {
     if (!searchQuery) {
@@ -17,7 +26,7 @@ function ArticlesPage() {
     return articles.filter((article) =>
       article.title.toLowerCase().includes(normalizedQuery),
     )
-  }, [searchQuery])
+  }, [searchQuery, articles])
 
   return (
     <section className="page">
@@ -41,11 +50,11 @@ function ArticlesPage() {
           <article key={article.id} className="card article-line">
             <div className="article-line-main" onClick={() => navigate(`/articles/${article.id}`)}>
               <div className="article-meta">
-                <span className="chip">{article.category}</span>
-                <span>{article.date}</span>
+                <span className="chip">{article.category ?? '未分类'}</span>
+                <span>{articleDate(article)}</span>
               </div>
               <h3>{article.title}</h3>
-              <p>{article.excerpt}</p>
+              <p>{articleExcerpt(article)}</p>
             </div>
             <button type="button" onClick={() => navigate(`/articles/${article.id}`)}>
               ↗

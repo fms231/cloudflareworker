@@ -3,13 +3,25 @@ import { useNavigate } from 'react-router-dom'
 
 import avatarImage from '../assets/avatar.png'
 import ArticleCard from '../components/ArticleCard'
-import { articles } from '../data/articles'
+import BubblePool from '../components/BubblePool'
 import { siteContent } from '../data/content'
+import type { Article } from '../types/blog'
 
 function HomePage() {
   const navigate = useNavigate()
   const fullBio = siteContent.hero.bio
   const [typedBio, setTypedBio] = useState('')
+  const [articles, setArticles] = useState<Article[]>([])
+
+  useEffect(() => {
+    fetch('/api/articles')
+      .then((res) => {
+        if (!res.ok) throw new Error(`Article request failed: ${res.status}`)
+        return res.json()
+      })
+      .then((data: Article[]) => setArticles(data))
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -60,6 +72,8 @@ function HomePage() {
           </div>
         </div>
       </header>
+
+      <BubblePool />
 
       <section className="section-head">
         <div>

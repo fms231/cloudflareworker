@@ -1,4 +1,5 @@
 import type { Article } from '../types/blog'
+import { articleDate, articleExcerpt, articleReadMinutes, articleWordCount } from '../types/blog'
 
 function ArticleCard({
   article,
@@ -10,14 +11,14 @@ function ArticleCard({
   return (
     <article className="card article-card" onClick={() => onOpen(article)}>
       <div className="article-meta">
-        <span className="chip">{article.category}</span>
-        <span>{article.date}</span>
+        <span className="chip">{article.category ?? '未分类'}</span>
+        <span>{articleDate(article)}</span>
       </div>
       <h3>{article.title}</h3>
-      <p>{article.excerpt}</p>
+      <p>{articleExcerpt(article)}</p>
       <div className="article-stats">
-        <span>● {article.readMinutes} min read</span>
-        <span>● {article.wordCount} words</span>
+        <span>● {articleReadMinutes(article)} min read</span>
+        <span>● {articleWordCount(article)} words</span>
       </div>
     </article>
   )
