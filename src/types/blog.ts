@@ -31,10 +31,10 @@ export function articleWordCount(a: Article): number {
 }
 
 export type Moment = {
-  id: string
-  time: string
+  id: number
   text: string
-  tags: string[]
+  created_at: number
+  updated_at: number
 }
 
 export type NavItem = {

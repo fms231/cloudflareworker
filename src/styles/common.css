@@ -9,6 +9,14 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-1);
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+              box-shadow 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+              border-color 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(106, 83, 179, 0.15);
 }
 
 .chip {
@@ -70,6 +78,13 @@
   font-size: 0.76rem;
   color: var(--text-muted);
   font-family: var(--font-ui);
+  transition: all 0.2s ease;
+}
+
+.tag-list span:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: rgba(106, 83, 179, 0.2);
 }
 
 .connect-list {
@@ -86,6 +101,15 @@
   font-weight: 600;
   color: #60597a;
   font-family: var(--font-ui);
+  transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
+  display: block;
+}
+
+.connect-list a:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: rgba(106, 83, 179, 0.2);
+  transform: translateX(4px);
 }
 
 .page-header {
@@ -122,6 +146,11 @@
 .article-line-main {
   padding: 26px 30px;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.article-line-main:hover {
+  background: rgba(106, 83, 179, 0.03);
 }
 
 .article-line-main:hover h3 {
@@ -151,6 +180,7 @@
   height: 100%;
   cursor: pointer;
   font-family: var(--font-ui);
+  transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .article-line button:hover {
