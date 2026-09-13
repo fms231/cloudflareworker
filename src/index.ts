@@ -1,5 +1,6 @@
 import { getCategories } from '../db/categories'
 import { getArticles, getArticleById, insertArticle } from '../db/articles'
+import { getMoments } from '../db/moments'
 
 function json(data: unknown, status = 200) {
 	return new Response(JSON.stringify(data), {
@@ -41,6 +42,15 @@ export default {
 				const article = await getArticleById(env.DB, articleMatch[1])
 				if (!article) return json({ error: 'Not found' }, 404)
 				return json(article)
+			} catch (e) {
+				return json({ error: String(e), stack: (e as Error)?.stack }, 500)
+			}
+		}
+
+		if (url.pathname === '/api/moments') {
+			try {
+				const moments = await getMoments(env.DB)
+				return json(moments)
 			} catch (e) {
 				return json({ error: String(e), stack: (e as Error)?.stack }, 500)
 			}

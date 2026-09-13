@@ -13,6 +13,13 @@
   padding: 8px 14px;
   cursor: pointer;
   font-family: var(--font-ui);
+  transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.back-btn:hover {
+  background: var(--primary-soft);
+  border-color: rgba(106, 83, 179, 0.2);
+  transform: translateX(-2px);
 }
 
 .detail-shell {

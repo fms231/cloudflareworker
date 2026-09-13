@@ -30,7 +30,7 @@ function ArticlesPage() {
 
   return (
     <section className="page">
-      <header className="page-header">
+      <header className="page-header reveal">
         <span className="chip status">ARTICLES</span>
         <h1>My Articles</h1>
         <p>
@@ -45,7 +45,7 @@ function ArticlesPage() {
         )}
       </header>
 
-      <div className="stack">
+      <div className="stack reveal-stagger">
         {visibleArticles.map((article) => (
           <article key={article.id} className="card article-line">
             <div className="article-line-main" onClick={() => navigate(`/articles/${article.id}`)}>

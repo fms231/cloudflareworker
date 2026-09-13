@@ -47,7 +47,7 @@ function HomePage() {
   return (
     <section className="page page-home">
       <header className="hero card">
-        <div className="avatar-shell">
+        <div className="avatar-shell hero-enter">
           <div className="avatar">
             <img
               src={avatarImage}
@@ -57,25 +57,27 @@ function HomePage() {
           </div>
         </div>
         <div className="hero-content">
-          <span className="chip status">{siteContent.hero.status}</span>
-          <h1>{siteContent.hero.name}</h1>
-          <p className="hero-bio typing-bio">
+          <span className="chip status hero-enter-delay-1">{siteContent.hero.status}</span>
+          <h1 className="hero-enter-delay-2">{siteContent.hero.name}</h1>
+          <p className="hero-bio typing-bio hero-enter-delay-3">
             {typedBio}
             <span
               aria-hidden="true"
               className={`typing-cursor ${typedBio.length >= fullBio.length ? 'is-done' : ''}`}
             />
           </p>
-          <div className="hero-meta">
+          <div className="hero-meta hero-enter-delay-3">
             <span>{siteContent.hero.location}</span>
             <span>{siteContent.hero.writingSince}</span>
           </div>
         </div>
       </header>
 
-      <BubblePool />
+      <div className="reveal">
+        <BubblePool />
+      </div>
 
-      <section className="section-head">
+      <section className="section-head reveal">
         <div>
           <h2>Latest Articles</h2>
           <p>Notes on Go, Python, AI-assisted coding, and the systems I build every day.</p>
@@ -86,7 +88,7 @@ function HomePage() {
       </section>
 
       <section className="home-grid">
-        <div className="stack">
+        <div className="stack reveal-stagger">
           {articles.slice(0, 3).map((article) => (
             <ArticleCard
               key={article.id}
@@ -95,7 +97,7 @@ function HomePage() {
             />
           ))}
         </div>
-        <aside className="stack">
+        <aside className="stack reveal-stagger">
           <article className="card">
             <h3>Core Tools</h3>
             <div className="tag-list">

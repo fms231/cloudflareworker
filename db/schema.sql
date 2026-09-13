@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS articles (
   updated_at INTEGER NOT NULL DEFAULT (unixepoch()),
   category_id INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS moments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  text TEXT NOT NULL,
+  created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  updated_at INTEGER NOT NULL DEFAULT (unixepoch())
+);
