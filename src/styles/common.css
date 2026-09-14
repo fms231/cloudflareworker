@@ -9,33 +9,53 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-1);
-  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
-              box-shadow 0.3s cubic-bezier(0.33, 1, 0.68, 1),
-              border-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+              box-shadow 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+              border-color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .card:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(128, 128, 128, 0.2);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 5px 12px;
   background: var(--surface-soft);
-  color: var(--primary);
-  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-family: var(--font-ui);
+  border: 1px solid var(--line);
 }
 
 .chip.status {
-  background: #f0f0f0;
-  color: #555555;
+  background: var(--surface-soft);
+  color: var(--text-muted);
 }
 
 .stack {
@@ -58,10 +78,12 @@
   margin: 0 0 10px;
   letter-spacing: -0.01em;
   font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .card:not(.article-card):not(.newsletter):not(.article-line):not(.detail-shell) {
-  padding: 24px 26px;
+  padding: 28px;
 }
 
 .tag-list {
@@ -72,44 +94,62 @@
 
 .tag-list span {
   border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: #f5f5f5;
-  padding: 4px 10px;
-  font-size: 0.76rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 6px 14px;
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-family: var(--font-ui);
-  transition: all 0.2s ease;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+  cursor: default;
 }
 
 .tag-list span:hover {
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: var(--primary);
+  color: var(--background);
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .connect-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .connect-list a {
   border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #f5f5f5;
-  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 14px 16px;
   font-weight: 600;
-  color: #444444;
+  color: var(--text);
   font-family: var(--font-ui);
-  transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
-  display: block;
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.connect-list a::before {
+  content: '→';
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .connect-list a:hover {
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: var(--primary);
+  color: var(--background);
+  border-color: var(--primary);
   transform: translateX(4px);
+}
+
+.connect-list a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .page-header {
@@ -146,11 +186,11 @@
 .article-line-main {
   padding: 26px 30px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.25s ease;
 }
 
 .article-line-main:hover {
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(128, 128, 128, 0.04);
 }
 
 .article-line-main:hover h3 {
@@ -180,11 +220,11 @@
   height: 100%;
   cursor: pointer;
   font-family: var(--font-ui);
-  transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .article-line button:hover {
-  background: #f0f0f0;
+  background: var(--surface-soft);
   color: var(--primary);
 }
 

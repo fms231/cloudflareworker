@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import avatarImage from '../assets/avatar.png'
 import ArticleCard from '../components/ArticleCard'
+import Terminal from '../components/Terminal'
 import { siteContent } from '../data/content'
 import type { Article } from '../types/blog'
 
@@ -70,6 +71,7 @@ function HomePage() {
             <span>{siteContent.hero.writingSince}</span>
           </div>
         </div>
+        <Terminal />
       </header>
 
       <section className="section-head reveal">
