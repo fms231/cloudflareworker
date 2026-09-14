@@ -16,7 +16,7 @@
 
 .card:hover {
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(106, 83, 179, 0.15);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .chip {
@@ -34,8 +34,8 @@
 }
 
 .chip.status {
-  background: #ddd6ef;
-  color: #594a93;
+  background: #f0f0f0;
+  color: #555555;
 }
 
 .stack {
@@ -73,7 +73,7 @@
 .tag-list span {
   border-radius: 999px;
   border: 1px solid var(--line-strong);
-  background: #efebf6;
+  background: #f5f5f5;
   padding: 4px 10px;
   font-size: 0.76rem;
   color: var(--text-muted);
@@ -84,7 +84,7 @@
 .tag-list span:hover {
   background: var(--primary-soft);
   color: var(--primary);
-  border-color: rgba(106, 83, 179, 0.2);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 .connect-list {
@@ -96,10 +96,10 @@
 .connect-list a {
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: #f2eef8;
+  background: #f5f5f5;
   padding: 10px 12px;
   font-weight: 600;
-  color: #60597a;
+  color: #444444;
   font-family: var(--font-ui);
   transition: all 0.22s cubic-bezier(0.33, 1, 0.68, 1);
   display: block;
@@ -108,7 +108,7 @@
 .connect-list a:hover {
   background: var(--primary-soft);
   color: var(--primary);
-  border-color: rgba(106, 83, 179, 0.2);
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateX(4px);
 }
 
@@ -150,7 +150,7 @@
 }
 
 .article-line-main:hover {
-  background: rgba(106, 83, 179, 0.03);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .article-line-main:hover h3 {
@@ -184,7 +184,7 @@
 }
 
 .article-line button:hover {
-  background: #e8e2f2;
+  background: #f0f0f0;
   color: var(--primary);
 }
 

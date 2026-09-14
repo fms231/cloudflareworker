@@ -6,7 +6,7 @@
 }
 
 .eyebrow {
-  color: #807896;
+  color: #888888;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -39,18 +39,18 @@
   min-height: 340px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, #2c253d, #5f4f82);
+  background: linear-gradient(135deg, #1a1a1a, #333333);
   transition: box-shadow 0.3s ease;
 }
 
 .portrait:hover {
-  box-shadow: 0 0 40px rgba(106, 83, 179, 0.2);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .portrait-light {
   position: absolute;
   inset: -20%;
-  background: radial-gradient(circle at 80% 20%, rgba(173, 149, 225, 0.42), transparent 45%);
+  background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1), transparent 45%);
 }
 
 .portrait-face {
@@ -75,20 +75,104 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  position: relative;
 }
 
-.journey-grid .card {
-  transition: transform 0.28s cubic-bezier(0.33, 1, 0.68, 1),
-              box-shadow 0.28s cubic-bezier(0.33, 1, 0.68, 1);
+.journey-grid::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4d4d4 20%, #999999 50%, #d4d4d4 80%, transparent);
+  opacity: 0.5;
 }
 
-.journey-grid .card:hover {
-  transform: translateY(-3px);
+.journey-card {
+  position: relative;
+  padding: 28px 24px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  transition: all 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+  overflow: hidden;
+}
+
+.journey-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0a0a0a, #666666, #0a0a0a);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.journey-card::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+  z-index: 2;
+}
+
+.journey-card:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow-card-hover);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.journey-card:hover::before {
+  opacity: 1;
+}
+
+.journey-card:hover::after {
+  background: #0a0a0a;
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.08), 0 0 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.2);
+}
+
+.journey-card .period {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  color: #555555;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-family: var(--font-meta);
+}
+
+.journey-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  color: var(--text);
+}
+
+.journey-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
 }
 
 .period {
-  color: #7b7391;
+  color: #888888;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -113,23 +197,22 @@
 
 .expertise-grid .big {
   grid-column: span 2;
-  background:
-    linear-gradient(160deg, rgba(233, 226, 245, 0.95), rgba(245, 240, 252, 0.95)),
-    #f4f1fa;
+  background: var(--surface);
 }
 
 .expertise-grid .highlight {
-  background: linear-gradient(160deg, #6d57b6, #58439f);
-  color: #f3eeff;
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #0a0a0a;
+  color: #ffffff;
+  border-color: #0a0a0a;
 }
 
 .expertise-grid .highlight p {
-  color: rgba(243, 238, 255, 0.9);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .expertise-grid .cyan {
-  background: linear-gradient(160deg, #c8bbe3, #ad9bd2);
+  background: #f0f0f0;
+  color: #0a0a0a;
 }
 
 .philosophy {

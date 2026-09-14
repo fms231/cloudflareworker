@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 import avatarImage from '../assets/avatar.png'
 import ArticleCard from '../components/ArticleCard'
-import BubblePool from '../components/BubblePool'
 import { siteContent } from '../data/content'
 import type { Article } from '../types/blog'
 
@@ -72,10 +71,6 @@ function HomePage() {
           </div>
         </div>
       </header>
-
-      <div className="reveal">
-        <BubblePool />
-      </div>
 
       <section className="section-head reveal">
         <div>
