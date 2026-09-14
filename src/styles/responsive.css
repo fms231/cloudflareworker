@@ -41,6 +41,18 @@
     grid-template-columns: 1fr;
   }
 
+  .journey-grid::before {
+    display: none;
+  }
+
+  .journey-card::after {
+    display: none;
+  }
+
+  .journey-card {
+    margin-left: 0;
+  }
+
   .expertise-grid .big {
     grid-column: auto;
   }

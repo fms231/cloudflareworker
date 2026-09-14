@@ -14,9 +14,9 @@
   width: 1px;
   background: linear-gradient(
     to bottom,
-    rgba(106, 83, 179, 0.22),
-    rgba(106, 83, 179, 0.58),
-    rgba(106, 83, 179, 0.22)
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.1)
   );
   transform: translateX(-50%);
 }
@@ -25,13 +25,9 @@
   position: relative;
   width: calc(50% - 30px);
   padding: 24px;
-  border: 1px solid rgba(117, 94, 185, 0.18);
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(238, 231, 250, 0.58)),
-    var(--surface);
-  box-shadow:
-    0 16px 34px rgba(58, 47, 93, 0.13),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
   overflow: hidden;
   transition: transform 0.28s cubic-bezier(0.33, 1, 0.68, 1),
               box-shadow 0.28s cubic-bezier(0.33, 1, 0.68, 1);
@@ -39,9 +35,7 @@
 
 .moment-card:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 24px 48px rgba(58, 47, 93, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .moment-card::before {
@@ -51,7 +45,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, rgba(131, 108, 196, 0.2), rgba(131, 108, 196, 0.85), rgba(131, 108, 196, 0.2));
+  background: linear-gradient(90deg, #e5e5e5, #999999, #e5e5e5);
 }
 
 .moment-card::after {
@@ -62,8 +56,8 @@
   height: 13px;
   border-radius: 50%;
   border: 3px solid var(--surface);
-  background: radial-gradient(circle at 30% 30%, #f3edff 0%, #7d67bc 58%, #5b468e 100%);
-  box-shadow: 0 0 0 4px rgba(106, 83, 179, 0.22);
+  background: #0a0a0a;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
 }
 
 .moment-card.left {
@@ -98,13 +92,9 @@
   margin-top: 18px;
   border-radius: 12px;
   height: 148px;
-  border: 1px solid rgba(124, 102, 187, 0.22);
-  background:
-    radial-gradient(circle at 20% 24%, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 48%),
-    linear-gradient(145deg, #e7def6 0%, #d3c3ec 38%, #b6a0dd 68%, #8b74be 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.46),
-    0 10px 24px rgba(78, 60, 122, 0.18);
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #e5e5e5 0%, #cccccc 50%, #999999 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .timeline-more {
@@ -115,8 +105,8 @@
   border: 1px solid var(--line-strong);
   border-radius: 10px;
   padding: 12px 20px;
-  background: #f6f3fb;
-  color: #595270;
+  background: #f5f5f5;
+  color: #555555;
   font-weight: 700;
   cursor: pointer;
   font-family: var(--font-ui);
@@ -126,7 +116,7 @@
 .timeline-more button:hover {
   background: var(--primary-soft);
   color: var(--primary);
-  border-color: rgba(106, 83, 179, 0.2);
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(106, 83, 179, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }

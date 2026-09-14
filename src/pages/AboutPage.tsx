@@ -43,7 +43,7 @@ function AboutPage() {
         </div>
         <div className="journey-grid reveal-stagger">
           {aboutContent.journey.items.map((item) => (
-            <article key={item.period} className="card">
+            <article key={item.period} className="journey-card">
               <span className="period">{item.period}</span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
