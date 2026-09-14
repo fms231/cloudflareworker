@@ -5,10 +5,10 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { navItems, siteContent } from '../data/content'
 
 function getInitialTheme(): 'light' | 'dark' {
-  if (typeof window === 'undefined') return 'light'
+  if (typeof window === 'undefined') return 'dark'
   const stored = localStorage.getItem('theme')
   if (stored === 'dark' || stored === 'light') return stored
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return 'dark'
 }
 
 function NavBar() {
