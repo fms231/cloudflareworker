@@ -37,6 +37,12 @@
     height: 160px;
   }
 
+  .terminal {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
   .hero-meta {
     justify-content: flex-start;
   }
