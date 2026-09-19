@@ -30,7 +30,7 @@ function ArticleDetailPage() {
   return (
     <section className="page page-detail">
       <button type="button" className="back-btn" onClick={() => navigate('/articles')}>
-        ← Back to Feed
+        Back to Feed
       </button>
       <article className="card detail-shell">
         <header className="detail-header">

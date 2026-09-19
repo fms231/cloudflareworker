@@ -1,4 +1,4 @@
-import type { NavItem } from '../types/blog'
+import type { NavItem, ConnectLink } from '../types/blog'
 
 export const navItems: NavItem[] = [
   { path: '/', label: 'Home' },
@@ -27,10 +27,12 @@ export const siteContent = {
     'Docker',
   ],
   connectLinks: [
-    { label: 'GitHub', href: '#' },
-    { label: 'LinkedIn', href: '#' },
-    { label: 'Blog', href: '#' },
-    { label: 'Resume', href: '#' },
+    { label: 'GitHub', href: '#', icon: 'GitHub' },
+    { label: 'LinkedIn', href: '#', icon: 'LinkedIn' },
+    { label: 'Blog', href: '#', icon: 'Blog' },
+    { label: 'Resume', href: '#', icon: 'Resume' },
+    { label: '小红书', href: '#', icon: 'Xiaohongshu' },
+    { label: '微信公众号', href: '#', icon: 'WeChat' },
   ],
   detailAuthor: {
     initials: 'BE',

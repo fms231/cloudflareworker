@@ -4,7 +4,7 @@ export const aboutContent = {
     title: 'Hi, I\'m Quito. Backend Engineer based in Guangzhou, China.',
     description:
       'Open to opportunities in Backend Development or AI Application Development. Currently working in Guangzhou, China.',
-    tags: ['MySQL', 'Docker', 'Redis', 'RocketMQ', 'Go', 'Python'],
+    tags: ['MySQL', 'Docker', 'Redis', 'RocketMQ'],
     videoSrc: '',
     videoAlt: 'Wallpaper video background',
   },
@@ -13,19 +13,19 @@ export const aboutContent = {
     description: 'A backend-first path centered on APIs, data layers, caching, messaging, and deployment tooling.',
     items: [
       {
-        period: '2026.04 — 2026.08',
-        title: 'Tencent (WeChat Group)',
-        description: 'Backend engineering at Tencent, working on WeChat Group systems.',
+        period: '2024.09 — 2027.06',
+        title: 'USTC M.S. Student',
+        description: 'Software learner at University of Science and Technology of China, Hefei.',
       },
       {
         period: '2025.06 — 2026.03',
         title: 'ByteDance (GMPT)',
-        description: 'Worked on ByteDance GMPT team. Focused on Go backend systems, improving reliability and delivery speed through better API design and infrastructure.',
+        description: 'Worked on ByteDance GMPT team. Focused on Go backend distributed systems.',
       },
       {
-        period: '2020 — 2025',
-        title: 'USTC M.S. Student',
-        description: 'Software learner at University of Science and Technology of China, Hefei.',
+        period: '2026.09 — 至今',
+        title: 'Tencent (WeChat Group)',
+        description: 'Backend engineering at Tencent, working on WeChat Group systems.',
       },
     ],
   },

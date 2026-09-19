@@ -41,3 +41,9 @@ export type NavItem = {
   path: string
   label: string
 }
+
+export type ConnectLink = {
+  label: string
+  href: string
+  icon: 'GitHub' | 'LinkedIn' | 'Blog' | 'Resume' | 'Xiaohongshu' | 'WeChat'
+}

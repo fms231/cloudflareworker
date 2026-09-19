@@ -411,6 +411,37 @@
   50% { opacity: 0; }
 }
 
+.connect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.connect-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.connect-list a:hover {
+  color: var(--primary);
+}
+
+.connect-list svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.connect-list a:hover svg {
+  opacity: 1;
+}
+
 [data-theme="dark"] .terminal {
   background: #0a0a0a;
   border-color: #222222;
