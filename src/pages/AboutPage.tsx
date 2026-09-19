@@ -8,28 +8,12 @@ function AboutPage() {
           <span className="eyebrow">{aboutContent.hero.eyebrow}</span>
           <h1>{aboutContent.hero.title}</h1>
           <p>{aboutContent.hero.description}</p>
-          <div className="tag-list">
-            {aboutContent.hero.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
         </div>
         <div className="portrait">
           <div className="portrait-light" />
-          <div className="portrait-face">
-            {aboutContent.hero.videoSrc ? (
-              <video
-                className="portrait-video"
-                src={aboutContent.hero.videoSrc}
-                aria-label={aboutContent.hero.videoAlt}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            ) : (
-              <div className="portrait-video" />
-            )}
+          <div className="portrait-quote">
+            <p>自信人生二百年</p>
+            <p>会当击水三千里</p>
           </div>
         </div>
       </header>
@@ -52,7 +36,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="expertise-grid reveal-stagger">
+      {/* <section className="expertise-grid reveal-stagger">
         {aboutContent.expertise.map((item) => (
           <article
             key={item.title}
@@ -69,7 +53,7 @@ function AboutPage() {
             ) : null}
           </article>
         ))}
-      </section>
+      </section> */}
 
       <section className="philosophy reveal">
         <h2>{aboutContent.philosophy.title}</h2>
