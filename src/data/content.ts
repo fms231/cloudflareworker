@@ -1,4 +1,4 @@
-import type { NavItem, ConnectLink } from '../types/blog'
+import type { NavItem } from '../types/blog'
 
 export const navItems: NavItem[] = [
   { path: '/', label: 'Home' },

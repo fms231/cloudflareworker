@@ -58,6 +58,30 @@
   color: var(--text-muted);
 }
 
+.chip.active {
+  background: var(--primary);
+  color: var(--background);
+  border-color: var(--primary);
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-filter .chip {
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.category-filter .chip:hover {
+  background: var(--primary);
+  color: var(--background);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
 .stack {
   display: flex;
   flex-direction: column;
@@ -240,4 +264,16 @@
 .article-line-empty p {
   margin: 0;
   color: var(--text-muted);
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 768px) {
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

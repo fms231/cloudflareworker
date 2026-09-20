@@ -1,5 +1,5 @@
 import type { Article } from '../types/blog'
-import { articleDate, articleExcerpt, articleReadMinutes, articleWordCount } from '../types/blog'
+import { articleDate, articleReadMinutes, articleWordCount } from '../types/blog'
 
 function ArticleCard({
   article,
@@ -15,7 +15,6 @@ function ArticleCard({
         <span>{articleDate(article)}</span>
       </div>
       <h3>{article.title}</h3>
-      <p>{articleExcerpt(article)}</p>
       <div className="article-stats">
         <span>● {articleReadMinutes(article)} min read</span>
         <span>● {articleWordCount(article)} words</span>

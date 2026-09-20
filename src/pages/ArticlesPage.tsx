@@ -2,13 +2,14 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import type { Article } from '../types/blog'
-import { articleDate, articleExcerpt } from '../types/blog'
+import { articleDate } from '../types/blog'
 
 function ArticlesPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const searchQuery = (searchParams.get('q') ?? '').trim()
   const [articles, setArticles] = useState<Article[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string>('')
 
   useEffect(() => {
     fetch('/api/articles')
@@ -17,16 +18,27 @@ function ArticlesPage() {
       .catch(() => {})
   }, [])
 
+  const categories = useMemo(() => {
+    const cats = new Set(articles.map((a) => a.category ?? '未分类'))
+    return Array.from(cats)
+  }, [articles])
+
   const visibleArticles = useMemo(() => {
-    if (!searchQuery) {
-      return articles
+    let result = articles
+
+    if (selectedCategory) {
+      result = result.filter((a) => (a.category ?? '未分类') === selectedCategory)
     }
 
-    const normalizedQuery = searchQuery.toLowerCase()
-    return articles.filter((article) =>
-      article.title.toLowerCase().includes(normalizedQuery),
-    )
-  }, [searchQuery, articles])
+    if (searchQuery) {
+      const normalizedQuery = searchQuery.toLowerCase()
+      result = result.filter((a) =>
+        a.title.toLowerCase().includes(normalizedQuery),
+      )
+    }
+
+    return result
+  }, [searchQuery, selectedCategory, articles])
 
   return (
     <section className="page">
@@ -45,7 +57,27 @@ function ArticlesPage() {
         )}
       </header>
 
-      <div className="stack reveal-stagger">
+      <div className="category-filter">
+        <button
+          type="button"
+          className={`chip ${selectedCategory === '' ? 'active' : ''}`}
+          onClick={() => setSelectedCategory('')}
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className={`chip ${selectedCategory === cat ? 'active' : ''}`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div className="articles-grid reveal-stagger">
         {visibleArticles.map((article) => (
           <article key={article.id} className="card article-line">
             <div className="article-line-main" onClick={() => navigate(`/articles/${article.id}`)}>
@@ -54,7 +86,6 @@ function ArticlesPage() {
                 <span>{articleDate(article)}</span>
               </div>
               <h3>{article.title}</h3>
-              <p>{articleExcerpt(article)}</p>
             </div>
             <button type="button" onClick={() => navigate(`/articles/${article.id}`)}>
               ↗
