@@ -77,7 +77,7 @@ function HomePage() {
       <section className="section-head reveal">
         <div>
           <h2>Latest Articles</h2>
-          <p>Notes on Go, Python, AI-assisted coding, and the systems I build every day.</p>
+
         </div>
         <button type="button" onClick={() => navigate('/articles')}>
           View Articles →
