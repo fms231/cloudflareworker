@@ -308,7 +308,8 @@
 }
 
 .expertise-grid .highlight p {
-  color: rgba(128, 128, 128, 0.8);
+  color: inherit;
+  opacity: 0.72;
 }
 
 .expertise-grid .cyan {
