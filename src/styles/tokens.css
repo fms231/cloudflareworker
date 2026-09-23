@@ -83,13 +83,13 @@ input {
 }
 
 [data-theme="dark"] .newsletter input {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--background);
 }
 
 [data-theme="dark"] .newsletter input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] .newsletter button {
@@ -156,7 +156,8 @@ input {
 }
 
 [data-theme="dark"] .expertise-grid .highlight p {
-  color: rgba(128, 128, 128, 0.8);
+  color: inherit;
+  opacity: 0.72;
 }
 
 [data-theme="dark"] .expertise-grid .cyan {
