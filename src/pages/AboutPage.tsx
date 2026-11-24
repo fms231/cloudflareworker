@@ -2,70 +2,36 @@ import { aboutContent } from '../data/about'
 
 function AboutPage() {
   return (
-    <section className="page page-about">
-      <header className="about-hero reveal">
-        <div className="stack">
-          <span className="eyebrow">{aboutContent.hero.eyebrow}</span>
-          <h1>{aboutContent.hero.title}</h1>
-          <p>{aboutContent.hero.description}</p>
+    <section className="flex flex-col gap-10">
+      <header className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-stretch">
+        <div className="flex flex-col justify-center gap-4">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">{aboutContent.hero.eyebrow}</span>
+          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight sm:text-6xl">{aboutContent.hero.title}</h1>
+          <p className="max-w-2xl text-base leading-8 text-neutral-600 dark:text-neutral-300">{aboutContent.hero.description}</p>
         </div>
-        <div className="portrait">
-          <div className="portrait-light" />
-          <div className="portrait-quote">
+        <div className="flex min-h-80 items-center justify-center overflow-hidden rounded-[18px] border border-neutral-800 bg-gradient-to-br from-neutral-950 via-slate-950 to-neutral-900 p-8 text-center text-2xl leading-loose text-neutral-200 shadow-xl shadow-neutral-950/20">
+          <div className="space-y-4 font-serif tracking-[0.18em]">
             <p>自信人生二百年</p>
             <p>会当击水三千里</p>
           </div>
         </div>
       </header>
 
-      <section className="stack">
-        <div className="section-head compact reveal">
-          <div>
-            <h2>{aboutContent.journey.title}</h2>
-            <p>{aboutContent.journey.description}</p>
-          </div>
+      <section className="flex flex-col gap-5">
+        <div>
+          <h2 className="font-display text-3xl font-semibold tracking-tight">{aboutContent.journey.title}</h2>
         </div>
-        <div className="journey-grid reveal-stagger">
+        <div className="grid gap-4 md:grid-cols-3">
           {aboutContent.journey.items.map((item) => (
-            <article key={item.period} className="journey-card">
-              <span className="period">{item.period}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+            <article key={item.period} className="rounded-[18px] border border-neutral-200 bg-neutral-50 p-6 shadow-lg shadow-neutral-900/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/20">
+              <span className="mb-3 inline-block rounded-lg border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">{item.period}</span>
+              <h3 className="mb-2 font-display text-2xl font-semibold">{item.title}</h3>
+              <p className="text-sm leading-7 text-neutral-600 dark:text-neutral-300">{item.description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      {/* <section className="expertise-grid reveal-stagger">
-        {aboutContent.expertise.map((item) => (
-          <article
-            key={item.title}
-            className={`card ${item.variant === 'highlight' ? 'highlight' : ''} ${item.variant === 'cyan' ? 'cyan' : ''} ${item.tags ? 'big' : ''}`}
-          >
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            {item.tags ? (
-              <div className="tag-list">
-                {item.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-            ) : null}
-          </article>
-        ))}
-      </section> */}
-
-      <section className="philosophy reveal">
-        <h2>{aboutContent.philosophy.title}</h2>
-        <div className="philosophy-grid">
-          {aboutContent.philosophy.principles.map((principle) => (
-            <article key={principle.title}>
-              <h3>{principle.title}</h3>
-              <p>{principle.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
     </section>
   )
 }

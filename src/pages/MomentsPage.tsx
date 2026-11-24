@@ -33,30 +33,31 @@ function MomentsPage() {
   const hasMoreMoments = visibleCount < moments.length
 
   return (
-    <section className="page page-moments">
-      <header className="page-header centered reveal">
-        <span className="chip status">Mood</span>
-        <h1>Daily Moments</h1>
-        <p>
+    <section className="flex flex-col gap-8">
+      <header className="flex flex-col items-center gap-3 text-center">
+        <span className="inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">Mood</span>
+        <h1 className="font-display text-5xl font-bold tracking-tight">Daily Moments</h1>
+        <p className="max-w-xl text-neutral-600 dark:text-neutral-300">
           Record my daily experiences and reflections, anything that matters.
         </p>
       </header>
 
-      <div className="timeline reveal-stagger">
-        {visibleMoments.map((moment, idx) => (
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 border-l border-neutral-200 pl-6 dark:border-neutral-800">
+        {visibleMoments.map((moment) => (
           <article
             key={moment.id}
-            className={`card moment-card ${idx % 2 === 0 ? 'left' : 'right'}`}
+            className="relative rounded-[18px] border border-neutral-200 bg-neutral-50 p-6 shadow-lg shadow-neutral-900/5 before:absolute before:-left-[31px] before:top-8 before:size-3 before:rounded-full before:border-2 before:border-neutral-500 before:bg-white dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/20 dark:before:bg-neutral-950"
           >
-            <time>{momentTime(moment.created_at)}</time>
-            <p>{moment.text}</p>
+            <time className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{momentTime(moment.created_at)}</time>
+            <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">{moment.text}</p>
           </article>
         ))}
       </div>
 
       {hasMoreMoments && (
-        <div className="timeline-more reveal">
+        <div className="text-center">
           <button
+            className="rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold dark:border-neutral-700"
             type="button"
             onClick={() =>
               setVisibleCount((currentCount) =>

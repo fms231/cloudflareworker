@@ -1,59 +1,31 @@
-import { getCategories } from '../db/categories'
-import { getArticles, getArticleById, insertArticle } from '../db/articles'
-import { getMoments } from '../db/moments'
-
-function json(data: unknown, status = 200) {
-	return new Response(JSON.stringify(data), {
-		status,
-		headers: { 'Content-Type': 'application/json' },
-	})
-}
+import { GetArticleById, ListArticles } from './api/articles'
+import { ListCategories } from './api/categories'
+import { ListMoments } from './api/moments'
+import { json } from './api/response'
 
 export default {
-	async fetch(request, env, _ctx): Promise<Response> {
-		const url = new URL(request.url)
+	async fetch(request, env): Promise<Response> {
+		const { pathname } = new URL(request.url)
 
-		if (url.pathname === '/api/categories') {
-			try {
-				const categories = await getCategories(env.DB)
-				return json(categories)
-			} catch (e) {
-				return json({ error: 'Internal server error' }, 500)
-			}
+		if (pathname === '/api/categories') {
+			return ListCategories(request, env.DB)
 		}
 
-		if (url.pathname === '/api/articles') {
-			if (request.method === 'POST') {
-				const body = await request.json() as Parameters<typeof insertArticle>[1]
-				await insertArticle(env.DB, body)
-				return json({ success: true })
-			}
-			try {
-				const articles = await getArticles(env.DB)
-				return json(articles)
-			} catch (e) {
-				return json({ error: String(e), stack: (e as Error)?.stack }, 500)
-			}
+		if (pathname === '/api/articles') {
+			return ListArticles(request, env.DB)
 		}
 
-		const articleMatch = url.pathname.match(/^\/api\/articles\/(.+)$/)
+		const articleMatch = pathname.match(/^\/api\/articles\/([^/]+)$/)
 		if (articleMatch) {
-			try {
-				const article = await getArticleById(env.DB, articleMatch[1])
-				if (!article) return json({ error: 'Not found' }, 404)
-				return json(article)
-			} catch (e) {
-				return json({ error: String(e), stack: (e as Error)?.stack }, 500)
-			}
+			return GetArticleById(request, env.DB, articleMatch[1])
 		}
 
-		if (url.pathname === '/api/moments') {
-			try {
-				const moments = await getMoments(env.DB)
-				return json(moments)
-			} catch (e) {
-				return json({ error: String(e), stack: (e as Error)?.stack }, 500)
-			}
+		if (pathname === '/api/moments') {
+			return ListMoments(request, env.DB)
+		}
+
+		if (pathname === '/api' || pathname.startsWith('/api/')) {
+			return json({ error: 'Not found' }, 404)
 		}
 
 		return env.ASSETS.fetch(request)
