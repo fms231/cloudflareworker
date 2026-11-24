@@ -67,9 +67,9 @@ function NavBar() {
   }
 
   return (
-    <nav className="top-nav">
-      <div className="brand">{siteContent.brandName}</div>
-      <div className="top-links">
+    <nav className="sticky top-3 z-30 flex flex-wrap items-center justify-between gap-4 rounded-[18px] border border-neutral-200 bg-white/95 p-3 shadow-lg shadow-neutral-900/5 dark:border-neutral-800 dark:bg-neutral-900/95 dark:shadow-black/20 sm:p-4">
+      <div className="font-brand text-2xl font-bold tracking-tight">{siteContent.brandName}</div>
+      <div className="flex flex-wrap gap-1 font-ui">
         {navItems.map((item) => {
           const isActive =
             item.path === '/'
@@ -79,7 +79,7 @@ function NavBar() {
           return (
             <button
               key={item.path}
-              className={isActive ? 'is-active' : ''}
+              className={`rounded-full px-3.5 py-2 text-sm font-semibold text-neutral-500 dark:text-neutral-400 ${isActive ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : ''}`}
               onClick={() => navigate(item.path)}
               type="button"
             >
@@ -88,9 +88,9 @@ function NavBar() {
           )
         })}
       </div>
-      <div className="top-actions">
+      <div className="flex w-full items-center gap-2 sm:w-auto">
         <button
-          className="theme-toggle"
+          className="flex size-9 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
           onClick={toggleTheme}
           type="button"
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
@@ -113,10 +113,10 @@ function NavBar() {
             </svg>
           )}
         </button>
-        <form className="search-form" onSubmit={onSearchSubmit}>
+        <form className="min-w-0 flex-1 sm:flex-none" onSubmit={onSearchSubmit}>
           <input
             aria-label="Search articles by title"
-            className="search"
+            className="w-full rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-2 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-neutral-400 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:focus:border-neutral-500 sm:w-56"
             placeholder={siteContent.searchPlaceholder}
             value={searchText}
             onChange={(event) => setSearchText(event.target.value)}

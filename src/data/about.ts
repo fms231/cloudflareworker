@@ -10,7 +10,6 @@ export const aboutContent = {
   },
   journey: {
     title: 'Engineering Journey',
-    description: 'A backend-first path centered on APIs, data layers, caching, messaging, and deployment tooling.',
     items: [
       {
         period: '2024.09 — 2027.06',
@@ -20,12 +19,12 @@ export const aboutContent = {
       {
         period: '2025.06 — 2026.03',
         title: 'ByteDance (GMPT)',
-        description: 'Worked on ByteDance GMPT team. Focused on Go backend distributed systems.',
+        description: 'Focused on user growth.',
       },
       {
         period: '2026.09 — 至今',
         title: 'Tencent (WeChat Group)',
-        description: 'Backend engineering at Tencent, working on WeChat Group systems.',
+        description: 'Working on transactions and payments.',
       },
     ],
   },
@@ -51,19 +50,4 @@ export const aboutContent = {
       description: 'Keeping Docker, queues, caches, and databases aligned for a predictable production stack.',
     },
   ],
-  philosophy: {
-    title: 'Engineering Philosophy',
-    principles: [
-      {
-        title: 'Reliability First',
-        description:
-          'Every system should fail predictably, recover quickly, and be easy to reason about.',
-      },
-      {
-        title: 'Ship with Discipline',
-        description:
-          'Speed matters, but only when the codebase stays observable, testable, and maintainable.',
-      },
-    ],
-  },
 }

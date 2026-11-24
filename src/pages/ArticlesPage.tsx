@@ -41,15 +41,15 @@ function ArticlesPage() {
   }, [searchQuery, selectedCategory, articles])
 
   return (
-    <section className="page">
-      <header className="page-header reveal">
-        <span className="chip status">ARTICLES</span>
-        <h1>My Articles</h1>
-        <p>
+    <section className="flex flex-col gap-10">
+      <header className="flex flex-col gap-3">
+        <span className="inline-flex w-fit rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">ARTICLES</span>
+        <h1 className="font-display text-5xl font-bold tracking-tight">My Articles</h1>
+        <p className="max-w-3xl leading-8 text-neutral-600 dark:text-neutral-300">
           Exploring Go, Python, Redis, MySQL, MQ, Docker, and the practical side of shipping backend systems.
         </p>
         {searchQuery && (
-          <p>
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
             {visibleArticles.length > 0
               ? `Matched ${visibleArticles.length} article(s) for "${searchQuery}"`
               : `No article title matched "${searchQuery}"`}
@@ -57,10 +57,10 @@ function ArticlesPage() {
         )}
       </header>
 
-      <div className="category-filter">
+      <div className="flex flex-wrap gap-2">
         <button
           type="button"
-          className={`chip ${selectedCategory === '' ? 'active' : ''}`}
+          className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${selectedCategory === '' ? 'border-neutral-900 bg-neutral-900 text-white dark:border-white dark:bg-white dark:text-neutral-900' : 'border-neutral-200 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300'}`}
           onClick={() => setSelectedCategory('')}
         >
           All
@@ -69,7 +69,7 @@ function ArticlesPage() {
           <button
             key={cat}
             type="button"
-            className={`chip ${selectedCategory === cat ? 'active' : ''}`}
+            className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${selectedCategory === cat ? 'border-neutral-900 bg-neutral-900 text-white dark:border-white dark:bg-white dark:text-neutral-900' : 'border-neutral-200 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300'}`}
             onClick={() => setSelectedCategory(cat)}
           >
             {cat}
@@ -77,25 +77,25 @@ function ArticlesPage() {
         ))}
       </div>
 
-      <div className="articles-grid reveal-stagger">
+      <div className="grid gap-5 md:grid-cols-2">
         {visibleArticles.map((article) => (
-          <article key={article.id} className="card article-line">
-            <div className="article-line-main" onClick={() => navigate(`/articles/${article.id}`)}>
-              <div className="article-meta">
-                <span className="chip">{article.category ?? '未分类'}</span>
+          <article key={article.id} className="flex items-stretch overflow-hidden rounded-[18px] border border-neutral-200 bg-neutral-50 shadow-lg shadow-neutral-900/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/20">
+            <div className="min-w-0 flex-1 cursor-pointer p-6" onClick={() => navigate(`/articles/${article.id}`)}>
+              <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                <span className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold uppercase dark:border-neutral-700 dark:bg-neutral-800">{article.category ?? '未分类'}</span>
                 <span>{articleDate(article)}</span>
               </div>
-              <h3>{article.title}</h3>
+              <h3 className="font-display text-2xl font-semibold leading-tight">{article.title}</h3>
             </div>
-            <button type="button" onClick={() => navigate(`/articles/${article.id}`)}>
+            <button className="w-16 border-l border-neutral-200 text-xl text-neutral-500 dark:border-neutral-800 dark:text-neutral-400" type="button" onClick={() => navigate(`/articles/${article.id}`)}>
               ↗
             </button>
           </article>
         ))}
         {visibleArticles.length === 0 && (
-          <article className="card article-line-empty">
-            <h3>No matching article yet</h3>
-            <p>Try searching with another title keyword from your posts.</p>
+          <article className="rounded-2xl border border-dashed border-neutral-300 p-6 dark:border-neutral-700">
+            <h3 className="font-semibold">No matching article yet</h3>
+            <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Try searching with another title keyword from your posts.</p>
           </article>
         )}
       </div>
