@@ -1,4 +1,4 @@
-export type View = 'home' | 'articles' | 'moments' | 'record' | 'about'
+export type View = 'home' | 'articles' | 'moments' | 'about'
 
 export type Article = {
   id: number

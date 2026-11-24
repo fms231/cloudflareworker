@@ -4,8 +4,6 @@ export const navItems: NavItem[] = [
   { path: '/', label: 'Home' },
   { path: '/articles', label: 'Articles' },
   { path: '/moments', label: 'Moments' },
-  { path: '/record', label: 'Record' },
-  { path: '/about', label: 'About' },
 ]
 
 export const siteContent = {
@@ -28,12 +26,9 @@ export const siteContent = {
     'Docker',
   ],
   connectLinks: [
-    { label: 'GitHub', href: '#', icon: 'GitHub' },
+    { label: 'GitHub', href: 'https://github.com/fms231', icon: 'GitHub' },
     { label: 'LinkedIn', href: '#', icon: 'LinkedIn' },
     { label: 'Blog', href: '#', icon: 'Blog' },
-    { label: 'Resume', href: '#', icon: 'Resume' },
-    { label: '小红书', href: '#', icon: 'Xiaohongshu' },
-    { label: '微信公众号', href: '#', icon: 'WeChat' },
   ],
   detailAuthor: {
     initials: 'BE',
