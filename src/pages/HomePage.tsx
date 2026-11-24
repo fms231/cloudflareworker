@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ArticleCard from '../components/ArticleCard'
-import Terminal from '../components/Terminal'
+import { aboutContent } from '../data/about'
 import { siteContent } from '../data/content'
 import type { Article } from '../types/blog'
 
@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <section className="flex flex-col gap-10">
-      <header className="grid gap-8 overflow-hidden rounded-[18px] border border-neutral-200 bg-gradient-to-br from-neutral-50 via-neutral-100 to-white p-8 shadow-xl shadow-neutral-900/10 dark:border-neutral-800 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 dark:shadow-black/25 md:grid-cols-[200px_1fr_minmax(260px,320px)] md:items-center md:p-12">
+      <header className="grid gap-8 overflow-hidden rounded-[18px] border border-neutral-200 bg-gradient-to-br from-neutral-50 via-neutral-100 to-white p-8 shadow-xl shadow-neutral-900/10 dark:border-neutral-800 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 dark:shadow-black/25 md:grid-cols-[200px_minmax(0,1fr)] md:items-center md:p-12">
         <div className="mx-auto flex size-48 items-center justify-center rounded-full bg-gradient-to-br from-neutral-500 via-neutral-300 to-neutral-700 p-1 shadow-lg shadow-neutral-900/15 dark:from-neutral-300 dark:via-neutral-600 dark:to-neutral-300 md:mx-0">
           <div className="size-full overflow-hidden rounded-full border-4 border-white bg-neutral-200 dark:border-neutral-950 dark:bg-neutral-800">
             <img
@@ -33,18 +33,38 @@ function HomePage() {
           </div>
         </div>
         <div className="relative z-10 space-y-4">
-          <span className="inline-flex rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">{siteContent.hero.status}</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">{siteContent.hero.status}</span>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">{aboutContent.hero.eyebrow}</span>
+          </div>
           <h1 className="font-display text-5xl font-bold leading-none tracking-tight sm:text-6xl">{siteContent.hero.name}</h1>
-          <p className="max-w-xl font-bio text-xl leading-8 text-neutral-600 dark:text-neutral-300">
-            {siteContent.hero.bio}
+          <p className="max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight text-neutral-800 dark:text-neutral-100">
+            {aboutContent.hero.title}
+          </p>
+          <p className="max-w-xl text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+            {aboutContent.hero.description}
           </p>
           <div className="flex flex-wrap gap-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
             <span>{siteContent.hero.location}</span>
             <span>{siteContent.hero.writingSince}</span>
           </div>
         </div>
-        <Terminal />
       </header>
+
+      <section className="flex flex-col gap-8">
+        <div className="flex flex-col gap-5">
+          <h2 className="font-display text-3xl font-semibold tracking-tight">{aboutContent.journey.title}</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {aboutContent.journey.items.map((item) => (
+              <article key={item.period} className="rounded-[18px] border border-neutral-200 bg-neutral-50 p-6 shadow-lg shadow-neutral-900/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/20">
+                <span className="mb-3 inline-block rounded-lg border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">{item.period}</span>
+                <h3 className="mb-2 font-display text-2xl font-semibold">{item.title}</h3>
+                <p className="text-sm leading-7 text-neutral-600 dark:text-neutral-300">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="flex flex-wrap items-center justify-between gap-4">
         <div>
